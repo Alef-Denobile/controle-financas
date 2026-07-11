@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Livro-Caixa — Pessoal &amp; Empresa</title>
+
+<!-- PWA: instalação no celular -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#2F6F4E" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Livro-Caixa" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <span class="brand-icon">₭</span>
+        <span class="brand-title">Livro-Caixa</span>
+      </div>
+      <p class="brand-sub">Pessoal &amp; Empresa</p>
+    </div>
+    <nav class="nav" id="nav">
+      <button class="nav-item active" data-tab="dashboard"><span class="nav-ico">▦</span>Painel</button>
+      <button class="nav-item" data-tab="lancamentos"><span class="nav-ico">⇄</span>Lançamentos</button>
+      <button class="nav-item" data-tab="cartoes"><span class="nav-ico">▭</span>Cartões</button>
+      <button class="nav-item" data-tab="investimentos"><span class="nav-ico">↗</span>Investimentos</button>
+      <button class="nav-item nav-empresa" data-tab="empresa"><span class="nav-ico">▣</span>Empresa</button>
+      <button class="nav-item nav-gold" data-tab="objetivos"><span class="nav-ico">◎</span>Objetivos</button>
+    </nav>
+    <p class="sidebar-footer">Seus dados ficam salvos neste navegador.</p>
+  </aside>
+
+  <!-- Main -->
+  <main class="main" id="main"></main>
+</div>
+
+<!-- Modal root -->
+<div id="modal-root"></div>
+
+<script src="app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js").catch(() => {
+        /* ambiente não suporta service worker (ex.: aberto via file://) — o app funciona normalmente do mesmo jeito */
+      });
+    });
+  }
+</script>
+</body>
+</html>
